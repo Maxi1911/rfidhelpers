@@ -3,7 +3,7 @@ import { DEFAULT_PREFIX_MAPPINGS, parseRfidTag, registerPrefixMapping, getActive
 import { Send, Server, Key, RefreshCw, CheckCircle2, Plus, Trash2, Tag, Truck, PlayCircle, AlertTriangle } from 'lucide-react';
 
 export default function ApiIntegration({ onScanDataSubmitted }) {
-  const [baseUrl, setBaseUrl] = useState('https://api.linengrass.com/api');
+  const [baseUrl, setBaseUrl] = useState(import.meta.env.VITE_BASE_URL || '/api');
   const [token, setToken] = useState('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXhpQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyMDIyLCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODQ3NTI4ODMsImV4cCI6MTc4OTkzNjg4M30.TUPpXrwjvsVER5kmqzOmX95af_ZsSGrARczX-ouVzQQ');
   const [companyId, setCompanyId] = useState('100000');
   const [readerId, setReaderId] = useState('RFID-BIN-YPR-01');
@@ -233,7 +233,7 @@ export default function ApiIntegration({ onScanDataSubmitted }) {
               </p>
             </div>
           </div>
-          <span className="badge badge-emerald">https://api.linengrass.com/api</span>
+          <span className="badge badge-emerald">{baseUrl}</span>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>

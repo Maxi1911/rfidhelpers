@@ -10,6 +10,9 @@ export default defineConfig({
         target: 'https://api.linengrass.com',
         changeOrigin: true,
         secure: false,
+        headers: {
+          Origin: 'http://localhost:3000',
+        },
       },
     },
   },

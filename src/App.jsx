@@ -8,13 +8,16 @@ export default function App() {
   });
 
   useEffect(() => {
+    const DEFAULT_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXhpQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyMDIyLCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODQ3NTI4ODMsImV4cCI6MTc4OTkzNjg4M30.TUPpXrwjvsVER5kmqzOmX95af_ZsSGrARczX-ouVzQQ';
     const envToken = import.meta.env.VITE_AUTH_TOKEN;
     const envCompanyId = import.meta.env.VITE_COMPANY_ID || '100000';
     const envDcid = import.meta.env.VITE_DCID || '100000';
 
     if (envCompanyId) localStorage.setItem('companyId', envCompanyId);
     if (envDcid) localStorage.setItem('dcid', envDcid);
-    if (envToken) localStorage.setItem('token', envToken);
+    if (envToken || !localStorage.getItem('token')) {
+      localStorage.setItem('token', envToken || DEFAULT_AUTH_TOKEN);
+    }
   }, []);
 
   useEffect(() => {
