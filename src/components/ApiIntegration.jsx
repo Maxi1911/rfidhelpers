@@ -4,7 +4,7 @@ import { Send, Server, Key, RefreshCw, CheckCircle2, Plus, Trash2, Tag, Truck, P
 
 export default function ApiIntegration({ onScanDataSubmitted }) {
   const [baseUrl, setBaseUrl] = useState(import.meta.env.VITE_BASE_URL || '/api');
-  const [token, setToken] = useState('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXhpQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyMDIyLCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODQ3NTI4ODMsImV4cCI6MTc4OTkzNjg4M30.TUPpXrwjvsVER5kmqzOmX95af_ZsSGrARczX-ouVzQQ');
+  const [token, setToken] = useState('eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFyYW5zcmlyYW0xMjA3QGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyNjI4LCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODk1NTQ4NjUsImV4cCI6MTc5NDczODg2NX0.Kj6W5nO_YFacERouWwhqJSO3W1-ITdsiB12_UZ0CKZo');
   const [companyId, setCompanyId] = useState('100000');
   const [readerId, setReaderId] = useState('RFID-BIN-YPR-01');
   const [referenceId, setReferenceId] = useState(132740);

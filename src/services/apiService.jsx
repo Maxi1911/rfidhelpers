@@ -50,9 +50,9 @@ function injectValue(config, metaKey, paramKey, getterFn) {
 
 apiService.interceptors.request.use(
   (config) => {
-    const DEFAULT_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXhpQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyMDIyLCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODQ3NTI4ODMsImV4cCI6MTc4OTkzNjg4M30.TUPpXrwjvsVER5kmqzOmX95af_ZsSGrARczX-ouVzQQ';
-    const envToken = import.meta.env.VITE_AUTH_TOKEN;
-    const token = envToken || localStorage.getItem("token") || DEFAULT_AUTH_TOKEN;
+    const DEFAULT_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFyYW5zcmlyYW0xMjA3QGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyNjI4LCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODk1NTQ4NjUsImV4cCI6MTc5NDczODg2NX0.Kj6W5nO_YFacERouWwhqJSO3W1-ITdsiB12_UZ0CKZo';
+    const storedToken = localStorage.getItem("token");
+    const token = (storedToken && !storedToken.includes('maxi@gmail.com')) ? storedToken : DEFAULT_AUTH_TOKEN;
     const companyId = import.meta.env.VITE_COMPANY_ID || localStorage.getItem("companyId") || "100000";
 
     const isLoginRoute = config.url?.includes("/auth/login");

@@ -8,15 +8,17 @@ export default function App() {
   });
 
   useEffect(() => {
-    const DEFAULT_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtYXhpQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyMDIyLCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODQ3NTI4ODMsImV4cCI6MTc4OTkzNjg4M30.TUPpXrwjvsVER5kmqzOmX95af_ZsSGrARczX-ouVzQQ';
-    const envToken = import.meta.env.VITE_AUTH_TOKEN;
+    const DEFAULT_AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGFyYW5zcmlyYW0xMjA3QGdtYWlsLmNvbSIsInVzZXJJZCI6MTAyNjI4LCJyb2xlIjoiQURNSU4iLCJ1c2VyVHlwZSI6IlRFQU0iLCJpYXQiOjE3ODk1NTQ4NjUsImV4cCI6MTc5NDczODg2NX0.Kj6W5nO_YFacERouWwhqJSO3W1-ITdsiB12_UZ0CKZo';
     const envCompanyId = import.meta.env.VITE_COMPANY_ID || '100000';
     const envDcid = import.meta.env.VITE_DCID || '100000';
 
     if (envCompanyId) localStorage.setItem('companyId', envCompanyId);
     if (envDcid) localStorage.setItem('dcid', envDcid);
-    if (envToken || !localStorage.getItem('token')) {
-      localStorage.setItem('token', envToken || DEFAULT_AUTH_TOKEN);
+    
+    const existingToken = localStorage.getItem('token');
+    // Set from frontend localStorage; initialize if missing or expired maxi token
+    if (!existingToken || existingToken.includes('maxi@gmail.com')) {
+      localStorage.setItem('token', DEFAULT_AUTH_TOKEN);
     }
   }, []);
 
